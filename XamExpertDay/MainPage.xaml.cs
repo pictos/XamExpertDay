@@ -1,5 +1,6 @@
 ﻿using Microsoft.Maui.Controls;
 using Microsoft.Maui.Essentials;
+using Microsoft.Maui.Graphics;
 using System;
 
 namespace XamExpertDay
@@ -19,6 +20,14 @@ namespace XamExpertDay
 			CounterLabel.Text = $"Current count: {count}";
 
 			SemanticScreenReader.Announce(CounterLabel.Text);
+
+			progressBar.Progress = Random.Shared.NextDouble();
+			progressBar.TrackColor = Color.FromRgb(RandomColorValue(), RandomColorValue(), RandomColorValue());
+			progressBar.ProgressColor = Color.FromRgb(RandomColorValue(), RandomColorValue(), RandomColorValue());
+
+
+
+			static double RandomColorValue() => Random.Shared.NextDouble();
 		}
 	}
 }

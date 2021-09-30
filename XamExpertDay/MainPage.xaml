@@ -1,18 +1,26 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="XamExpertDay.MainPage"
+             xmlns:local="clr-namespace:XamExpertDay.Controls"
              BackgroundColor="{DynamicResource SecondaryColor}">
 
     <ScrollView Padding="{OnPlatform iOS='30,60,30,30', Default='30'}">
-        <Grid RowSpacing="25" RowDefinitions="Auto,Auto,Auto,Auto,*">
+        <Grid RowSpacing="25" RowDefinitions="Auto,Auto,Auto,Auto, *">
 
-            <Label 
+            <VerticalStackLayout>
+                <Label 
                 Text="Hello, World!"
                 Grid.Row="0"
                 SemanticProperties.HeadingLevel="Level1"
                 FontSize="32"
                 HorizontalOptions="Center" />
 
+
+                <local:HorizontalProgressBar x:Name="progressBar"
+                                         Progress="0.5"
+                                         TrackColor="Fuchsia"
+                                         ProgressColor="Black"/>
+            </VerticalStackLayout>
             <Label 
                 Text="Welcome to .NET Multi-platform App UI"
                 Grid.Row="1"
@@ -30,7 +38,8 @@
                 HorizontalOptions="Center" />
 
             <Button 
-                Text="Click me"
+                 Text="{Binding Progress}"
+                        BindingContext="{Binding Source={x:Reference progressBar}}"
                 FontAttributes="Bold"
                 Grid.Row="3"
                 SemanticProperties.Hint="Counts the number of times you click"

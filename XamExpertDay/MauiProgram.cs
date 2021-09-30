@@ -2,6 +2,7 @@
 using Microsoft.Maui.Controls.Compatibility;
 using Microsoft.Maui.Controls.Hosting;
 using Microsoft.Maui.Hosting;
+using XamExpertDay.Controls;
 
 namespace XamExpertDay
 {
@@ -15,6 +16,10 @@ namespace XamExpertDay
 				.ConfigureFonts(fonts =>
 				{
 					fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+				})
+				.ConfigureMauiHandlers(h =>
+				{
+					h.AddHandler(typeof(HorizontalProgressBar), typeof(HorizontalProgressBarHandler));
 				});
 
 			return builder.Build();
